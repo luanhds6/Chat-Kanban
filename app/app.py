@@ -24,3 +24,4 @@ app.add_page(
 )
 app.add_page(login_page, route="/login")
 app.add_page(signup_page, route="/signup")
+app.add_page(index, title="ChatCompany")

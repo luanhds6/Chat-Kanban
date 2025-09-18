@@ -18,7 +18,7 @@ def priority_indicator(priority: rx.Var[str]) -> rx.Component:
             ("High", "w-3 h-1.5 rounded-full bg-red-500"),
             ("Medium", "w-3 h-1.5 rounded-full bg-yellow-500"),
             ("Low", "w-3 h-1.5 rounded-full bg-green-500"),
-            "w-3 h-1.5 rounded-full bg-gray-300",
+            "w-3 h-1.5 rounded-full bg-slate-300",
         )
     )
 

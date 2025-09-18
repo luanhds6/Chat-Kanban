@@ -7,22 +7,22 @@ def user_management_header() -> rx.Component:
     return rx.el.div(
         rx.el.div(
             rx.el.h1(
-                "Gerenciar Usuários", class_name="text-3xl font-bold text-gray-900"
+                "Gerenciar Usuários", class_name="text-3xl font-bold text-slate-900"
             ),
             rx.el.p(
                 "Adicione, edite ou remova usuários da sua equipe.",
-                class_name="text-gray-500 mt-1",
+                class_name="text-slate-500 mt-1",
             ),
         ),
         rx.el.div(
             rx.el.div(
-                rx.icon("search", class_name="w-5 h-5 text-gray-400"),
+                rx.icon("search", class_name="w-5 h-5 text-slate-400"),
                 rx.el.input(
                     placeholder="Pesquisar por nome ou e-mail...",
                     on_change=AuthState.set_search_query,
-                    class_name="bg-transparent focus:ring-0 border-none w-full placeholder-gray-400 text-sm",
+                    class_name="bg-transparent focus:ring-0 border-none w-full placeholder-slate-400 text-sm",
                 ),
-                class_name="flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-3 py-2 w-full max-w-xs shadow-sm",
+                class_name="flex items-center gap-2 bg-white border border-slate-200 rounded-lg px-3 py-2 w-full max-w-xs shadow-sm",
             ),
             rx.el.select(
                 rx.el.option("Todos os Setores", value="All"),
@@ -31,13 +31,13 @@ def user_management_header() -> rx.Component:
                     lambda dept: rx.el.option(dept, value=dept),
                 ),
                 on_change=AuthState.set_department_filter,
-                class_name="bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 shadow-sm focus:ring-2 focus:ring-blue-500",
+                class_name="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 shadow-sm focus:ring-2 focus:ring-blue-500",
             ),
             rx.el.button(
                 rx.icon("plus", class_name="w-5 h-5 mr-2"),
                 "Adicionar Usuário",
                 on_click=lambda: AuthState.open_user_modal(None),
-                class_name="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-sm",
+                class_name="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-200 shadow-sm transform hover:scale-105",
             ),
             class_name="flex items-center gap-4",
         ),
@@ -119,29 +119,29 @@ def user_table() -> rx.Component:
                         rx.el.th(
                             "Nome",
                             scope="col",
-                            class_name="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider",
+                            class_name="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider",
                         ),
                         rx.el.th(
                             "Departamento",
                             scope="col",
-                            class_name="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider",
+                            class_name="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider",
                         ),
                         rx.el.th(
                             "Função",
                             scope="col",
-                            class_name="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider",
+                            class_name="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider",
                         ),
                         rx.el.th(
                             "Status",
                             scope="col",
-                            class_name="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider",
+                            class_name="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider",
                         ),
                         rx.el.th(scope="col", class_name="relative px-6 py-3"),
                     )
                 ),
                 rx.el.tbody(
                     rx.foreach(AuthState.filtered_users, user_table_row),
-                    class_name="bg-white divide-y divide-gray-200",
+                    class_name="bg-white divide-y divide-slate-200",
                 ),
                 min_w="full",
             ),
@@ -156,5 +156,5 @@ def user_management_view() -> rx.Component:
         user_management_header(),
         user_table(),
         user_modal(),
-        class_name="w-full h-full bg-gray-50 pt-8",
+        class_name="w-full h-full bg-slate-100 pt-8",
     )

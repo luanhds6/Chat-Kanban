@@ -14,12 +14,12 @@ def kanban_column(title: str, tasks: list) -> rx.Component:
     return rxe.dnd.drop_target(
         rx.el.div(
             rx.el.div(
-                rx.el.h2(title, class_name="text-base font-semibold text-gray-700"),
+                rx.el.h2(title, class_name="text-base font-semibold text-slate-700"),
                 rx.el.span(
                     count,
-                    class_name="px-2 py-0.5 text-xs font-bold text-gray-600 bg-gray-200 rounded-full",
+                    class_name="px-2 py-0.5 text-xs font-bold text-slate-600 bg-slate-200 rounded-full",
                 ),
-                class_name="flex items-center justify-between px-4 py-3 border-b border-gray-200",
+                class_name="flex items-center justify-between px-4 py-3 border-b border-slate-200",
             ),
             rx.el.div(
                 rx.foreach(tasks, lambda t: kanban_card(task=t)),
@@ -27,8 +27,8 @@ def kanban_column(title: str, tasks: list) -> rx.Component:
             ),
             class_name=rx.cond(
                 drop_params.is_over,
-                "flex flex-col flex-shrink-0 w-80 bg-blue-50 rounded-xl border border-blue-400",
-                "flex flex-col flex-shrink-0 w-80 bg-gray-50 rounded-xl border border-gray-200",
+                "flex flex-col flex-shrink-0 w-80 bg-blue-50 rounded-xl border border-blue-400 transition-colors duration-300",
+                "flex flex-col flex-shrink-0 w-80 bg-slate-100 rounded-xl border border-slate-200 transition-colors duration-300",
             ),
         ),
         accept=["task"],
@@ -40,9 +40,9 @@ def kanban_column(title: str, tasks: list) -> rx.Component:
 def kanban_board_header() -> rx.Component:
     return rx.el.div(
         rx.el.div(
-            rx.el.h1("Kanban Board", class_name="text-3xl font-bold text-gray-900"),
+            rx.el.h1("Kanban Board", class_name="text-3xl font-bold text-slate-900"),
             rx.el.p(
-                "Organize and track your team's work.", class_name="text-gray-500 mt-1"
+                "Organize and track your team's work.", class_name="text-slate-500 mt-1"
             ),
         ),
         rx.el.div(
@@ -54,7 +54,7 @@ def kanban_board_header() -> rx.Component:
                 ),
                 on_change=KanbanState.set_assignee_filter,
                 default_value=KanbanState.assignee_filter,
-                class_name="bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 shadow-sm focus:ring-2 focus:ring-blue-500",
+                class_name="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 shadow-sm focus:ring-2 focus:ring-blue-500",
             ),
             rx.el.select(
                 rx.el.option("All Tags", value="All"),
@@ -63,13 +63,13 @@ def kanban_board_header() -> rx.Component:
                 ),
                 on_change=KanbanState.set_tag_filter,
                 default_value=KanbanState.tag_filter,
-                class_name="bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 shadow-sm focus:ring-2 focus:ring-blue-500",
+                class_name="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 shadow-sm focus:ring-2 focus:ring-blue-500",
             ),
             rx.el.button(
                 rx.icon("plus", class_name="w-5 h-5 mr-2"),
                 "Add Task",
                 on_click=KanbanState.toggle_add_task_modal,
-                class_name="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-sm",
+                class_name="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-200 shadow-sm transform hover:scale-105",
             ),
             class_name="flex items-center gap-4",
         ),
